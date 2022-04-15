@@ -1,27 +1,26 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
   TouchableOpacity,
   ImageBackground,
-  Dimensions,
   TextInput,
-  Button
+  Button,
+  Image
 } from 'react-native';
 import Navigation from '../../Navigation';
 import Inputs from '../components/Inputs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import {Icon} from 'react-native-elements';
+import {Feather} from "react-native-vector-icons";
 
 function Login ({navigation}) {
+    //const [visible, setVisible] = useState(true);
     return (
         <ImageBackground style = {styles.background} 
             source = {require('../images/background_img/login_background.png')} resizeMode='stretch'>
@@ -29,13 +28,14 @@ function Login ({navigation}) {
                 <Text style = {styles.title}>LOGIN</Text>
                 <View style = {{marginTop: 10}}/>
                 <Inputs name="Email"/>
-                <Inputs name="Password"/>
+                <Inputs name="Password" /> 
+                
                 <Text style={styles.forgotPassword}>Forgot your password?
                     <Text style={styles.clickHere}> Click here</Text>
                 </Text>
                 
                 <TouchableOpacity style={styles.button}
-                    onPress={() => navigation.navigate('./Unconnected_Device.js')}>
+                    onPress={() => navigation.navigate('UnconnectedDevice')}>
                     <Text style = {styles.buttonName}>LOGIN</Text>
                 </TouchableOpacity>
             </View>

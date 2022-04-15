@@ -1,8 +1,12 @@
-import React, {Component} from "react";
-import {View, StyleSheet, Text} from "react-native";
-import { Input } from "react-native-elements";
+import React, {Component, useState} from "react";
+import {View, StyleSheet, Text, Image} from "react-native";
+import { Button, Icon, Input} from "react-native-elements";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import {Feather} from "react-native-vector-icons";
 
+const [visiblePass, setVisiblePass] = useState(true);
 class Inputs extends Component {
+    
     state = {isFocused: false};
     onFocusChange = () => {
         this.setState({isFocused: true})
@@ -15,22 +19,27 @@ class Inputs extends Component {
                     onFocus={this.onFocusChange}
                     inputContainerStyle={styles.inputContainer}
                     inputStyle={styles.inputText}
-                    secureTextEntry={this.props.pass}
+                    secureTextEntry={this.props.pass=visiblePass? true: false}
                     />
+                
+               
             </View>
         );
     };
 };
+
 
 const styles = StyleSheet.create({
     container: {
         width: '90%',
         height: 50,
         marginVertical: 10,
-        borderWidth: 2,
+        borderBottomWidth: 1.5,
+        flexDirection: 'row',
     },
     inputContainer: {
         borderBottomWidth: 0,
+        
     },
     inputText: {
         color: '#000',
